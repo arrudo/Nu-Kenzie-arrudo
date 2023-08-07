@@ -12,18 +12,18 @@
 .summary__cards {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 1.25rem;
   li {
     padding: 1rem;
     border-radius: 4px;
     background-color: var(--color-grey-1);
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 1.875rem;
     div {
       display: flex;
       flex-direction: column;
-      gap: 35px;
+      gap: 2.1875rem;
     }
   }
   li.card_income {
@@ -47,11 +47,11 @@
 .card__button {
   cursor: pointer;
   border: none;
-  font-size: 10px;
+  font-size: 0.625rem;
   border-radius: 2px;
   background-color: var(--color-grey-2);
   transition: 0.2s;
-  width: 50px;
+  width: 3.725rem;
   padding: 0.3rem;
 }
 .card__button:hover {
