@@ -14,9 +14,9 @@ input {
   color: var(--color-grey-4);
 }
 
-input:focus{
-    border-color: black;
+input:focus {
+  border-color: black;
 }
 input:focus::placeholder {
-    color: transparent;
-  }
+  color: transparent;
+}

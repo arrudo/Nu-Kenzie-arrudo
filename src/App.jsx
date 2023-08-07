@@ -1,15 +1,15 @@
-import { useState } from 'react'
-import './styles/index.scss'
-import { MainPage } from './pages/MainPage'
+import { useState } from "react";
+import "./styles/index.scss";
+import { MainPage } from "./pages/MainPage";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   return (
     <>
-    <MainPage/>
+      <MainPage />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

@@ -12,21 +12,34 @@ export const Form = ({ transactions, setTransactions }) => {
 
   const submit = (e) => {
     e.preventDefault();
-    
-    const newTransaction = {
-      ...formData,
-      id: uuidv4() 
-    };
-    
-    setTransactions([...transactions, newTransaction]);
-    
-    setFormData({
-      description: "",
-      value: "",
-      type: "income",
-    });
+  
+    if (
+      formData.description.trim() !== "" &&
+      !isNaN(parseFloat(formData.value)) &&
+      parseFloat(formData.value) > 0
+    ) {
+      const newTransaction = {
+        ...formData,
+        id: uuidv4(),
+      };
+  
+      setTransactions([...transactions, newTransaction]);
+  
+      setFormData({
+        description: "",
+        value: "",
+        type: "income",
+      });
+    } else {
+        window.alert('Insira uma descrição e um valor válido')
+    }
   };
 
+  const handlePrice = (e) => {
+    const newValue = e.target.value; 
+    setFormData({ ...formData, value: newValue });
+  };
+  
   return (
     <form className={styles.form__container}>
       <div className="container">
@@ -48,9 +61,7 @@ export const Form = ({ transactions, setTransactions }) => {
             placeholder={"1"}
             id={"value"}
             value={formData.value}
-            onChange={(e) => {
-              setFormData({ ...formData, value: e.target.value });
-            }}
+            onChange={handlePrice}  
           />
           <label htmlFor="type">Tipo de valor</label>
           <div className={styles.select__wrapper}>

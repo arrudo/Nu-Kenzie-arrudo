@@ -6,7 +6,7 @@ import { TotalMoney } from "../../components/TotalMoney";
 import styles from "./style.module.scss";
 
 export const MainPage = () => {
-    const [transactions, setTransactions] = useState([])
+  const [transactions, setTransactions] = useState([]);
   return (
     <DefaultTemplate>
       <div className={styles.main__container}>
@@ -15,7 +15,10 @@ export const MainPage = () => {
           <TotalMoney transactions={transactions} />
         </div>
 
-        <Summary transactions={transactions} />
+        <Summary
+          transactions={transactions}
+          setTransactions={setTransactions}
+        />
       </div>
     </DefaultTemplate>
   );

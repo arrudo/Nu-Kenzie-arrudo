@@ -1,7 +1,14 @@
 import React from "react";
 import styles from "./style.module.scss";
 
-export const Summary = ({ transactions }) => {
+export const Summary = ({ transactions, setTransactions }) => {
+  const handleDelete = (id) => {
+    const updatedTransactions = transactions.filter(
+      (transaction) => transaction.id !== id
+    );
+    setTransactions(updatedTransactions);
+  };
+
   return (
     <section className={styles.summary__container}>
       <div className="container">
@@ -9,7 +16,14 @@ export const Summary = ({ transactions }) => {
         <ul className={styles.summary__cards}>
           {transactions.length > 0 ? (
             transactions.map((transaction) => (
-              <li className={transaction.type === "income" ? styles.card_income : styles.card_expense} key={transaction.id}>
+              <li
+                className={
+                  transaction.type === "income"
+                    ? styles.card_income
+                    : styles.card_expense
+                }
+                key={transaction.id}
+              >
                 <div>
                   <h3 className={styles.card__title}>
                     {transaction.description}
@@ -19,8 +33,18 @@ export const Summary = ({ transactions }) => {
                   </p>
                 </div>
                 <div>
-                  <p className={styles.card__value}>{transaction.value}</p>
-                  <button className={styles.card__button}>Excluir</button>
+                  <p className={styles.card__value}>
+                    {parseFloat(transaction.value).toLocaleString("pt-BR", {
+                      style: "currency",
+                      currency: "BRL",
+                    })}
+                  </p>
+                  <button
+                    onClick={() => handleDelete(transaction.id)}
+                    className={styles.card__button}
+                  >
+                    Excluir
+                  </button>
                 </div>
               </li>
             ))
