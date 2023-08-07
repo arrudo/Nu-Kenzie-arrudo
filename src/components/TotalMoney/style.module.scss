@@ -1,0 +1,20 @@
+.totalMoney__controller {
+  border: 1px solid var(--grey-2, #E9ECEF);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 16px;
+  div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    span{
+      color: var(--color-primary-1);
+    }
+  }
+  p{
+    color: var(--color-grey-3);
+    font-size: var(--font-size-1);
+  }
+}
