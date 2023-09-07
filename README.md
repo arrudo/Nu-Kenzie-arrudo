@@ -1,3 +1,7 @@
 # Nu Kenzie
 
-aplicação para gerenciamento de gastos, cadastrando entradas e saídas.
+Tecnologias utilizadas:
+- Javascript
+- React
+- HTML5
+- CSS3 (+ SASS)
