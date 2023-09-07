@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import styles from "./style.module.scss";
-import { Input } from "../Input";
+import { Input } from "./Input";
 import { v4 as uuidv4 } from 'uuid';
+import { toast } from "react-toastify";
 
 export const Form = ({ transactions, setTransactions }) => {
   const [formData, setFormData] = useState({
@@ -31,14 +32,15 @@ export const Form = ({ transactions, setTransactions }) => {
         type: "income",
       });
     } else {
-        window.alert('Insira uma descrição e um valor válido')
+        toast.error('Insira uma descrição e um valor válido')
+        setFormData({
+          description: "",
+          value: "",
+          type: "income",
+        });
     }
   };
 
-  const handlePrice = (e) => {
-    const newValue = e.target.value; 
-    setFormData({ ...formData, value: newValue });
-  };
   
   return (
     <form className={styles.form__container}>
@@ -61,7 +63,9 @@ export const Form = ({ transactions, setTransactions }) => {
             placeholder={"1"}
             id={"value"}
             value={formData.value}
-            onChange={handlePrice}  
+            onChange={(e) => {
+              setFormData({...formData, value: e.target.value})
+            }}  
           />
           <label htmlFor="type">Tipo de valor</label>
           <div className={styles.select__wrapper}>
